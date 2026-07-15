@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string', 'in:tenant,broker,owner'],
+            'role' => ['required', 'string', 'in:tenant,broker,landlord'],
             'phone' => ['required', 'string', 'max:20'],
             'region' => ['required', 'string', 'max:100'],
             'district' => ['required', 'string', 'max:100'],

@@ -172,7 +172,7 @@
 
         {{-- Results count --}}
         <div class="flex items-center justify-between mb-4">
-            <p class="text-xs text-gray-500">Showing <span class="font-bold text-gray-900">24</span> {{ $category }} available</p>
+            <p class="text-xs text-gray-500">Showing <span class="font-bold text-gray-900">{{ $properties->total() }}</span> {{ $category }} available</p>
             <div class="flex items-center gap-2 text-xs text-gray-500">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                 Grid View
@@ -180,86 +180,59 @@
         </div>
 
         {{-- Grid --}}
+        @if($properties->isEmpty())
+            <div class="text-center py-16">
+                <div class="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-3">
+                    <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <p class="text-sm font-bold text-gray-700">No {{ $category }} found</p>
+                <p class="text-xs text-gray-400">Check back soon or browse all properties</p>
+                <a href="{{ route('properties.index') }}" class="inline-flex items-center gap-2 mt-3 px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">Browse All</a>
+            </div>
+        @else
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
 
-            @php
-                $houses = [
-                    ['img' => 'photo-1564013799919-ab600027ffc6', 'title' => '3 Bedroom House', 'location' => 'Mikocheni', 'price' => '450K', 'beds' => '3', 'baths' => '2', 'badge' => 'HOT'],
-                    ['img' => 'photo-1512917774080-9991f1c4c650', 'title' => '2 Bedroom Apartment', 'location' => 'Kigamboni', 'price' => '350K', 'beds' => '2', 'baths' => '2', 'badge' => 'NEW'],
-                    ['img' => 'photo-1502672260266-1c1ef2d93688', 'title' => 'Studio Apartment', 'location' => 'Sinza', 'price' => '180K', 'beds' => '1', 'baths' => '1', 'badge' => null],
-                    ['img' => 'photo-1600596542815-05585f0aee67', 'title' => '4 Bedroom Maisonette', 'location' => 'Masaki', 'price' => '850K', 'beds' => '4', 'baths' => '3', 'badge' => 'HOT'],
-                    ['img' => 'photo-1493809842364-78817add7ffb', 'title' => '3 Bedroom Apartment', 'location' => 'Mbezi Beach', 'price' => '600K', 'beds' => '3', 'baths' => '2', 'badge' => 'NEW'],
-                    ['img' => 'photo-1583608205776-bfd35f0d9f83', 'title' => '2 Bedroom House', 'location' => 'Tabata', 'price' => '250K', 'beds' => '2', 'baths' => '1', 'badge' => null],
-                    ['img' => 'photo-1600585154340-be6161a56a0c', 'title' => '5 Bedroom Villa', 'location' => 'Masaki', 'price' => '1.2M', 'beds' => '5', 'baths' => '4', 'badge' => 'HOT'],
-                    ['img' => 'photo-1568605114967-8130f81a6abd', 'title' => '4 Bedroom House', 'location' => 'Oyster Bay', 'price' => '750K', 'beds' => '4', 'baths' => '3', 'badge' => null],
-                    ['img' => 'photo-1570129477492-45c14393aa41', 'title' => '3 Bedroom Apartment', 'location' => 'Upanga', 'price' => '500K', 'beds' => '3', 'baths' => '2', 'badge' => null],
-                    ['img' => 'photo-1480074055461-7ab1a82d0782', 'title' => '2 Bedroom House', 'location' => 'Mbezi', 'price' => '400K', 'beds' => '2', 'baths' => '2', 'badge' => 'NEW'],
-                    ['img' => 'photo-1516455590576-3a75f3e4e66b', 'title' => '2 Bedroom Apartment', 'location' => 'Sinza', 'price' => '300K', 'beds' => '2', 'baths' => '1', 'badge' => null],
-                    ['img' => 'photo-1416339306562-f3d12fefd36f', 'title' => 'Modern Studio', 'location' => 'Kariakoo', 'price' => '200K', 'beds' => '1', 'baths' => '1', 'badge' => null],
-                    ['img' => 'photo-1560448204-e02f11c3d029', 'title' => '3 Bedroom House', 'location' => 'Kijitonyama', 'price' => '550K', 'beds' => '3', 'baths' => '2', 'badge' => 'HOT'],
-                    ['img' => 'photo-1516455590576-3a75f3e4e66b', 'title' => '1 Bedroom Studio', 'location' => 'Manzese', 'price' => '150K', 'beds' => '1', 'baths' => '1', 'badge' => 'NEW'],
-                    ['img' => 'photo-1493809842364-78817add7ffb', 'title' => '4 Bedroom House', 'location' => 'Tegeta', 'price' => '700K', 'beds' => '4', 'baths' => '3', 'badge' => null],
-                    ['img' => 'photo-1600596542815-05585f0aee67', 'title' => '3 Bedroom Maisonette', 'location' => 'Bagamoyo', 'price' => '650K', 'beds' => '3', 'baths' => '2', 'badge' => null],
-                    ['img' => 'photo-1564013799919-ab600027ffc6', 'title' => '2 Bedroom House', 'location' => 'Goba', 'price' => '280K', 'beds' => '2', 'baths' => '1', 'badge' => null],
-                    ['img' => 'photo-1512917774080-9991f1c4c650', 'title' => '1 Bedroom Apartment', 'location' => 'Ilala', 'price' => '220K', 'beds' => '1', 'baths' => '1', 'badge' => 'NEW'],
-                    ['img' => 'photo-1502672260266-1c1ef2d93688', 'title' => 'Studio Flat', 'location' => 'Magomeni', 'price' => '170K', 'beds' => '1', 'baths' => '1', 'badge' => null],
-                    ['img' => 'photo-1583608205776-bfd35f0d9f83', 'title' => '3 Bedroom House', 'location' => 'Kimbugwe', 'price' => '320K', 'beds' => '3', 'baths' => '2', 'badge' => null],
-                    ['img' => 'photo-1568605114967-8130f81a6abd', 'title' => '5 Bedroom House', 'location' => 'Kunduchi', 'price' => '900K', 'beds' => '5', 'baths' => '4', 'badge' => 'HOT'],
-                    ['img' => 'photo-1570129477492-45c14393aa41', 'title' => '2 Bedroom Apartment', 'location' => 'Tandika', 'price' => '260K', 'beds' => '2', 'baths' => '1', 'badge' => null],
-                    ['img' => 'photo-1480074055461-7ab1a82d0782', 'title' => '3 Bedroom House', 'location' => 'Mbagala', 'price' => '380K', 'beds' => '3', 'baths' => '2', 'badge' => null],
-                    ['img' => 'photo-1416339306562-f3d12fefd36f', 'title' => 'Bachelor Studio', 'location' => 'Ubungo', 'price' => '160K', 'beds' => '1', 'baths' => '1', 'badge' => 'NEW'],
-                ];
-            @endphp
-
-            @foreach ($houses as $house)
-            <div class="card-hover bg-white rounded-xl overflow-hidden border border-[#E6E0DA] hover:shadow-lg">
-                <div class="relative h-32 overflow-hidden">
-                    <img src="https://images.unsplash.com/{{ $house['img'] }}?w=400&q=80" alt="{{ $house['title'] }}" class="w-full h-full object-cover">
+            @foreach ($properties as $property)
+            <a href="{{ route('properties.show', $property) }}" class="card-hover bg-white rounded-xl overflow-hidden border border-[#E6E0DA] hover:shadow-lg">
+                <div class="relative h-32 overflow-hidden bg-gray-100">
+                    @if($property->images->first())
+                        <img src="{{ asset('storage/' . $property->images->first()->image_path) }}" alt="{{ $property->title }}" class="w-full h-full object-cover">
+                    @else
+                        <div class="w-full h-full flex items-center justify-center"><svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+                    @endif
                     <div class="absolute top-2 left-2 flex gap-1">
                         <span class="px-1.5 py-0.5 bg-brand-600 text-white text-[8px] font-bold rounded-full">RENT</span>
-                        @if ($house['badge'])
-                        <span class="px-1.5 py-0.5 @if ($house['badge'] === 'HOT') bg-gold-400 @else bg-green-500 @endif text-white text-[8px] font-bold rounded-full">{{ $house['badge'] }}</span>
+                        @if($property->is_featured)
+                        <span class="px-1.5 py-0.5 bg-gold-400 text-white text-[8px] font-bold rounded-full">FEATURED</span>
                         @endif
                     </div>
-                    <button class="absolute top-2 right-2 w-7 h-7 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm hover:bg-white transition-all group">
-                        <svg class="w-3.5 h-3.5 text-brand-500 group-hover:fill-brand-500 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                    </button>
                     <div class="absolute bottom-2 left-2 px-2 py-0.5 bg-black/70 backdrop-blur-sm rounded">
-                        <span class="text-white font-bold text-[10px]">TSh {{ $house['price'] }}</span>
+                        <span class="text-white font-bold text-[10px]">TSh {{ number_format($property->rent_amount) }}</span>
                         <span class="text-gray-300 text-[8px]">/mo</span>
                     </div>
                 </div>
                 <div class="p-3">
                     <div class="flex items-center gap-1 text-[10px] text-gray-400 mb-1">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        {{ $house['location'] }}
+                        {{ $property->region }}
                     </div>
-                    <h3 class="font-bold text-gray-900 text-xs mb-2 truncate">{{ $house['title'] }}</h3>
+                    <h3 class="font-bold text-gray-900 text-xs mb-2 truncate">{{ $property->title }}</h3>
                     <div class="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
-                        <span>{{ $house['beds'] }} Beds</span>
-                        <span>{{ $house['baths'] }} Baths</span>
+                        <span>{{ $property->bedrooms }} Beds</span>
+                        <span>{{ $property->bathrooms }} Baths</span>
                     </div>
-                    <a href="#" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
+                    <span class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</span>
                 </div>
-            </div>
+            </a>
             @endforeach
 
         </div>
 
         {{-- Pagination --}}
-        <div class="flex items-center justify-center gap-2 mt-8">
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E6E0DA] bg-white text-gray-400 hover:bg-brand-50 hover:text-brand-600 transition-colors text-xs font-bold">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            </button>
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg bg-brand-600 text-white text-xs font-bold">1</button>
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E6E0DA] bg-white text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors text-xs font-bold">2</button>
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E6E0DA] bg-white text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors text-xs font-bold">3</button>
-            <span class="text-gray-400 text-xs px-1">...</span>
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E6E0DA] bg-white text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors text-xs font-bold">8</button>
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E6E0DA] bg-white text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors text-xs font-bold">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </button>
+        <div class="mt-6">
+            {{ $properties->links() }}
         </div>
+        @endif
     </div>
 </section>
 

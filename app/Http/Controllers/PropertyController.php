@@ -191,9 +191,9 @@ class PropertyController extends Controller
         $user = auth()->user();
         if ($user->hasFavorited($property)) {
             $user->favorites()->where('property_id', $property->id)->delete();
-            return response()->json(['favorited' => false]);
+            return back()->with('success', 'Removed from favorites.');
         }
         $user->favorites()->create(['property_id' => $property->id]);
-        return response()->json(['favorited' => true]);
+        return back()->with('success', 'Added to favorites!');
     }
 }

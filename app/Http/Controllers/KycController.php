@@ -52,20 +52,20 @@ class KycController extends Controller
         $data = [
             'user_id' => $user->id,
             'nida_number' => $validated['nida_number'],
-            'id_card_path' => $request->file('id_card')->store('kyc', 'private'),
-            'selfie_path' => $request->file('selfie')->store('kyc', 'private'),
+            'id_card_path' => $request->file('id_card')->store('kyc', 'local'),
+            'selfie_path' => $request->file('selfie')->store('kyc', 'local'),
             'status' => 'pending',
         ];
 
         if ($user->isLandlord() && $request->hasFile('proof_of_ownership')) {
-            $data['proof_of_ownership_path'] = $request->file('proof_of_ownership')->store('kyc', 'private');
+            $data['proof_of_ownership_path'] = $request->file('proof_of_ownership')->store('kyc', 'local');
         }
 
         if ($user->isBroker()) {
             $data['business_name'] = $validated['business_name'];
             $data['operating_area'] = $validated['operating_area'];
             if ($request->hasFile('business_licence')) {
-                $data['business_licence_path'] = $request->file('business_licence')->store('kyc', 'private');
+                $data['business_licence_path'] = $request->file('business_licence')->store('kyc', 'local');
             }
         }
 

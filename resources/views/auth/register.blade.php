@@ -148,13 +148,13 @@
 
                         {{-- Owner --}}
                         <label class="cursor-pointer">
-                            <input type="radio" name="role" value="owner" class="peer sr-only" {{ old('role') === 'owner' ? 'checked' : '' }}>
+                            <input type="radio" name="role" value="landlord" class="peer sr-only" {{ old('role') === 'landlord' ? 'checked' : '' }}>
                             <div class="flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 peer-checked:border-brand-500 peer-checked:bg-brand-50 transition-all hover:border-brand-300">
                                 <div class="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21V8l9-5 9 5v13M3 21h18M9 21V12h6v9"/></svg>
                                 </div>
                                 <div class="flex-1">
-                                    <p class="text-sm font-bold text-gray-900">Property Owner (Mwenye Nyumba)</p>
+                                    <p class="text-sm font-bold text-gray-900">Property Owner / Landlord (Mwenye Nyumba)</p>
                                     <p class="text-xs text-gray-500">I have properties to rent out</p>
                                 </div>
                             </div>

@@ -491,7 +491,7 @@
                     <p class="text-[11px] text-gray-400">Handpicked premium rentals</p>
                 </div>
             </div>
-            <a href="#" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">
+            <a href="{{ route('properties.index') }}" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">
                 View All
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
@@ -526,7 +526,7 @@
                         <span>3 Beds</span>
                         <span>2 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 1) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
                         View
                     </a>
                 </div>
@@ -558,7 +558,7 @@
                         <span>2 Beds</span>
                         <span>2 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 2) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
                         View
                     </a>
                 </div>
@@ -589,7 +589,7 @@
                         <span>1 Bed</span>
                         <span>1 Bath</span>
                     </div>
-                    <a href="{{ route('property.show', 3) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
                         View
                     </a>
                 </div>
@@ -621,7 +621,7 @@
                         <span>4 Beds</span>
                         <span>3 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 4) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
                         View
                     </a>
                 </div>
@@ -653,7 +653,7 @@
                         <span>3 Beds</span>
                         <span>2 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 5) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
                         View
                     </a>
                 </div>
@@ -684,7 +684,7 @@
                         <span>2 Beds</span>
                         <span>1 Bath</span>
                     </div>
-                    <a href="{{ route('property.show', 6) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">
                         View
                     </a>
                 </div>
@@ -694,7 +694,7 @@
 
         {{-- View All Button --}}
         <div class="text-center mt-6">
-            <a href="#" class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-brand-600 bg-brand-50 hover:bg-brand-100 border border-brand-200 rounded-xl transition-all">
+            <a href="{{ route('properties.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-brand-600 bg-brand-50 hover:bg-brand-100 border border-brand-200 rounded-xl transition-all">
                 View All Listings
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
@@ -760,7 +760,7 @@
                     <div class="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
                         <span>5 Beds</span><span>4 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 7) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
                 </div>
             </div>
 
@@ -789,7 +789,7 @@
                     <div class="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
                         <span>4 Beds</span><span>3 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 8) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
                 </div>
             </div>
 
@@ -818,7 +818,7 @@
                     <div class="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
                         <span>3 Beds</span><span>2 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 9) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
                 </div>
             </div>
 
@@ -847,7 +847,7 @@
                     <div class="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
                         <span>2 Beds</span><span>2 Baths</span>
                     </div>
-                    <a href="{{ route('property.show', 10) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
                 </div>
             </div>
 
@@ -876,7 +876,7 @@
                     <div class="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
                         <span>2 Beds</span><span>1 Bath</span>
                     </div>
-                    <a href="{{ route('property.show', 11) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
                 </div>
             </div>
 
@@ -905,7 +905,7 @@
                     <div class="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
                         <span>1 Bed</span><span>1 Bath</span>
                     </div>
-                    <a href="{{ route('property.show', 12) }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
+                    <a href="{{ route('properties.index') }}" class="block w-full py-1.5 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all">View</a>
                 </div>
             </div>
 
